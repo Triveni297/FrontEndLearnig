@@ -2,6 +2,54 @@
 <html lang="en">
 <head>
     <title>Validation</title>
+    <script>
+        function validation(){
+          var uname=f.username.value;
+          if(uname.length<=0){
+            alert("Please enter username");
+            f.username.focus();
+            return false;
+          }
+          else if(uname.length<4){
+            alert("please enter atleast 4 characters");
+            f.ussername.focus();
+            return false;
+          }
+          var pass=f.password.value;
+          if(pass.length<=0){
+            alert("please enter password");
+            f.password.focus();
+            return false;
+          }
+          else if(pass.length<6){
+            alert("Please enter atleast 6 characters");
+            f.password.focus();
+            return false;
+          }
+          var email=f.email.value;
+          if(email.length<=0){
+            alert("please enter email");
+            f.email.focus();
+            return false;
+          }
+          var phno=f.phno.value;
+          if(phno.length<=0){
+            alert("please enter phone number");
+            f.phno.focus();
+            return false;
+          }
+          else if(isNaN(phno)){
+            alert("please enter only numbers");
+            f.phno.focus();
+            return false;
+          }
+          else if(phno.length!=10){
+            alert("please enter 10 digits");
+            f.phno.focus();
+            return false;
+          }
+        }
+    </script>
 </head>
 <body align="center">
  <h3>Registration Form </h3>
