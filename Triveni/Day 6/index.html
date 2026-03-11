@@ -4,57 +4,108 @@
     <title>Validation</title>
     <script>
         function validation(){
-          var uname=f.username.value;
+          var uname=f1.username.value;
           if(uname.length<=0){
             alert("Please enter username");
-            f.username.focus();
+            f1.username.focus();
             return false;
           }
           else if(uname.length<4){
             alert("please enter atleast 4 characters");
-            f.ussername.focus();
+            f1.username.focus();
             return false;
           }
-          var pass=f.password.value;
+          var pass=f1.password.value;
           if(pass.length<=0){
             alert("please enter password");
-            f.password.focus();
+            f1.password.focus();
             return false;
           }
-          else if(pass.length<6){
+          if(pass.length<6){
             alert("Please enter atleast 6 characters");
-            f.password.focus();
+            f1.password.focus();
             return false;
           }
-          var email=f.email.value;
+          var email=f1.email.value;
+          let eflag=false;
           if(email.length<=0){
             alert("please enter email");
-            f.email.focus();
+            f1.email.focus();
             return false;
           }
-          var phno=f.phno.value;
+          else{
+            for(i=0;i<email.length;i++){
+              if(email.charAt(i)=="@"){
+                eflag=true;
+                break;
+              }
+            }
+          }
+          if(!(eflag)){
+            alert("Please enter a valid email Id");
+            f1.email.focus();
+            return false;
+          }
+          var phno=f1.phno.value;
           if(phno.length<=0){
             alert("please enter phone number");
-            f.phno.focus();
+            f1.phno.focus();
             return false;
           }
           else if(isNaN(phno)){
             alert("please enter only numbers");
-            f.phno.focus();
+            f1.phno.focus();
             return false;
           }
-          else if(phno.length!=10){
+          if(phno.length!=10){
             alert("please enter 10 digits");
-            f.phno.focus();
+            f1.phno.focus();
             return false;
           }
-        }
+          //gender validation
+          let flag=false;
+          for(i=0;i<f1.gen.length;i++){
+            if(f1.gen[i].checked){
+              flag=true;
+              break;
+            }
+          }
+            if(!(flag)){
+              alert("Please choose the gender");
+              f1.gen.focus();
+              return false;
+            }
+
+         //language validation
+          let lflag=false;
+          for(i=0;i<f1.lang.length;i++){
+            if(f1.lang[i].checked){
+              lflag=true;
+              break;
+            }
+          }
+          if(!(lflag)){
+            alert("Please choose atleast one language");
+            f1.lang.focus();
+            return false;
+          }
+          //address validation
+          var add=f1.address.value;
+          if(add.length<=0){
+            alert("please enter the address");
+            f1.address.focus();
+            return false;
+          }
+          alert("Registration Successfull!!!");
+          return true;
+          }
+
     </script>
 </head>
-<body align="center">
- <h3>Registration Form </h3>
+<body >
+ <h3 align="center">Registration Form </h3>
  <br/>
-<form name="f1">
+<form name="f1" onsubmit="return validation()">
  <table cellpadding="1" align="center" >
  <tr><td> User Name:*</td>
  <td><input type="text" name="username"></td></tr>
@@ -76,7 +127,7 @@
  <tr> <td valign="top">Address:*</td>
  <td><textarea name="address"></textarea></td>
  <tr><td></td><td><input type="button" value="SUBMIT" hspace="10"
-onclick="validate()">
+onclick="validation()">
 <input type="reset" value="RESET"></td></tr>
  <tr> <td colspan=2 >*<font color="red">fields are mandatory</font>
  </td>
